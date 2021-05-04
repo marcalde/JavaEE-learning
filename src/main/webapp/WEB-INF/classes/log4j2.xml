@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<File name="FILE" fileName="MARCO_LOG.log" append="false">
+			<PatternLayout pattern="%d{ISO8601} %C %M %L %T - %m%n" />
+			<MarkerFilter marker="PROVA" onMatch="ACCEPT" onMismatch="DENY" />
+		</File>
+		 <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+            <MarkerFilter marker="PROVA" onMatch="ACCEPT" onMismatch="DENY" />
+        </Console>
+        <Console name="STDOUTNM" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%-5p} - %m%n" />
+            <NoMarkerFilter onMatch="ACCEPT" onMismatch="DENY" />
+        </Console>
+        <File name="FILEWARN" fileName="MARCO_WARN.log" append="true">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %C %M %L - %m%n" />
+			<MarkerFilter marker="PROVA" onMatch="DENY" onMismatch="NEUTRAL" />
+		</File>
+	</Appenders>
+	<Loggers>
+		<Root level="error">
+			<AppenderRef ref="STDOUT" />
+			<AppenderRef ref="STDOUTNM" />
+		</Root>
+		<Logger name="debug" level="debug" additivity="false">
+			<AppenderRef ref="STDOUTNM" />
+			<AppenderRef ref="FILE" />
+		</Logger>
+		<Logger name="database" level="all" additivity="false">
+			<AppenderRef ref="FILEWARN" />
+		</Logger>
+	</Loggers>
+</Configuration>

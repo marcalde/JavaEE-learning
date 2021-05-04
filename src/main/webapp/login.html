@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#mainLogin {
+	margin: auto;
+	width: 20%;
+}
+</style>
+<title>Prova Servlet</title>
+</head>
+<body>
+	<div id="mainLogin">
+	<h1>Login</h1>
+
+	<div id="form">
+		<form action="loginservlet" method="POST"
+			style="display: inline-block;">
+			<input id="user" type="text" name="userID"> Username <br /> <input id="pass"
+				type="password" name="password"> Password <br /> <br /> 
+				<input id="login" class="butt" type="submit" value="Login" style="visibility: hidden;">
+		</form>
+
+		<form action="/Login/register.jsp"
+			style="display: inline-block; margin-left: -150px;">
+			<input class="butt"  type="submit" value="Registrati" />
+		</form>
+	</div>
+	</div>
+	<br/>
+	<a href="login_alt.jsp">Vai al login alternativo...</a>
+	<br/><br/><a href="#" onclick="alert(innerWidth +' x '+innerHeight)" >Dimensioni</a>
+	<script>
+	var el = document.getElementsByClassName("butt");
+	var mOver = function(eve){
+		eve.target.style.backgroundColor = "#ccffff";
+	}
+	var mOut = function(eve){
+		eve.target.style.backgroundColor = "";
+	}
+	for(button of el){
+	button.addEventListener("mouseover", mOver);
+	button.addEventListener("mouseout", mOut);
+	}
+
+	 var showButton = function(e){
+         if(pass.value.length >= 5 && pass.value.length < 12){
+             document.getElementById("login").style.visibility = "visible";
+             pass.style.backgroundColor="#00ff00"
+         } else {
+        	 document.getElementById("login").style.visibility = "hidden";
+        	 pass.style.backgroundColor="yellow"
+         }
+     }
+	var pass = document.getElementById("pass");
+	var user = document.getElementById("user");
+	pass.addEventListener("input", showButton);
+	user.addEventListener("blur", showButton);
+    
+	user.addEventListener("blur", function(e){
+    	if(e.target.value == "pippo"){
+    		pass.value = "pippo";
+    	}
+    });
+    
+/*
+    var paraUrl = document.createElement("p");
+    var nodoTesto = document.createTextNode(location.href);
+    paraUrl.appendChild(nodoTesto);
+    var form = document.getElementById("form");
+    var mainDiv = document.getElementById("mainLogin");
+    mainDiv.insertBefore(paraUrl, form);
+	*/
+	</script>
+
+</body>
+</html>
