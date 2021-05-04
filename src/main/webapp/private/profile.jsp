@@ -110,7 +110,7 @@
 	</div>
 	<div>
 	<h1 style="visibility: hidden;">d</h1>
-
+<!--  
 		<table>
 			<tr>
 				<td><label>Nome</label></td>
@@ -129,6 +129,7 @@
 				<td><input type="number" name="age" /></td>
 			</tr>
 		</table>
+		-->
 	</form>
 	</div>
 	</div>
