@@ -36,6 +36,7 @@ public class EmailHandler extends ResponseHandler implements Observer {
 
 		try {
 
+			String ciao;
 			this.out = response.getWriter();
 
 			Properties  prop = new Properties();
