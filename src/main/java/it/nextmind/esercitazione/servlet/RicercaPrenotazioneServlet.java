@@ -21,21 +21,21 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class RicercaPrenotazioneServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
+
+
 		long id = Integer.parseInt(request.getParameter("id")) ;
-		
+
 		try(CloseableHttpClient httpClient = HttpClients.createDefault()){
-			
+
 			String url = "http://localhost:8084/API/prenot/"+id;
-			
+
 			HttpGet httpGet = new HttpGet(url);
-			
+
 			try(CloseableHttpResponse httpResponse = httpClient.execute(httpGet)){
 				HttpEntity responseEntity = httpResponse.getEntity();
 				try {
@@ -43,23 +43,22 @@ public class RicercaPrenotazioneServlet extends HttpServlet {
 					PrintWriter out = response.getWriter();
 					out.print(jsonString);
 					out.print("\n");
-					
-					
+
+
 					JSONObject jo = new JSONObject(jsonString);
-					String name = jo.getString("nome");
-					String surname = jo.getString("cognome");
-					int age = jo.getInt("eta");
+					String name = jo.getString("name");
+					String surname = jo.getString("surname");
+					int age = jo.getInt("age");
 					out.print(name+"\n");
 					out.print(surname+"\n");
 					out.print(age+"\n");
 					out.close();
+					
 				} catch (ParseException | IOException e) {
 					e.printStackTrace();
 				}
+				
 			}
-			
-			
-			
 		}
 	}
 }
