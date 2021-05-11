@@ -69,6 +69,9 @@
 	<hr />
 	<div style="display: flex; justify-content: space-around;">
 	<div>
+	<form action="http://localhost:8084/API/prenotaz" method="GET">
+	<input type="submit" value="Prova" />
+	</form>
 	<h1>Prenotazione</h1>
 	<form action="http://localhost:8084/API/prenot" method="POST">
 		<table>
